@@ -23,4 +23,5 @@ Este proyecto es una recreación del popular juego **2048**, desarrollado utiliz
 - **CSS3:** Para los estilos y diseño responsivo.
 - **JavaScript:** Para toda la lógica del juego y los controles.
 
-## 📂 Estructura del proyecto
+
+![Screenshot from 2024-11-18 19-33-44](https://github.com/user-attachments/assets/36b81615-b33d-45cd-8d96-6990f72f5d57)
