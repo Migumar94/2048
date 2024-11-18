@@ -1,0 +1,88 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    width: 90vw; 
+    height: 90vw;
+    padding: 10px;
+	background-color: #bbada0;
+	border-radius: 10px;
+	position: relative;
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cdc1b4;
+    font-size: 35px;
+    font-weight: bold;
+    color: #333;
+	border-radius: 10px;
+	transition: transform 0.3s ease;
+}
+body {
+	color: #776e65;
+	background-color: #faf8ef;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+h1 {
+	color: #776e65;
+    font-weight: bold;
+    font-size: 80px;
+	line-height: 85px;
+}
+header {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: space-between;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.score-container {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+#lose{
+	color: red;
+	font-size: 4rem;
+	font-weight: bold;
+	position:absolute;
+	top: 30%;
+	left: 30%;
+	visibility: hidden;
+}
+
+button {
+	background-color: #8f7a66;
+	color: white;
+	padding: 10px 20px;
+	margin: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+span {
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #8f7a66;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+
+@media (min-width: 600px) {
+	.grid-container {
+		width: 400px;
+		height: 400px;
+	}
+}
