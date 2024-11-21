@@ -73,16 +73,20 @@
 				document.getElementById("lose").style.visibility = "visible";
 			}
 		}
-		document.getElementById("restart-btn").addEventListener("click", () => {
-			document.getElementById("lose").style.visibility = "hidden";
-			for(let i = 0; i < 4; i++){
-				for(let j = 0; j < 4; j++){
-					matriz[i][j] = "";
-				}
+		function restartGame() {
+		document.getElementById("lose").style.visibility = "hidden";
+		for (let i = 0; i < 4; i++) {
+			for (let j = 0; j < 4; j++) {
+				matriz[i][j] = "";
 			}
-			start(matriz);
-			document.getElementById("score").innerText = 0;
-		});
+		}
+		start(matriz);
+		document.getElementById("score").innerText = 0;
+
+		}
+		document.getElementById("restart-btn").addEventListener("click", restartGame);
+	
+		document.getElementById("restart-btn").addEventListener("touchstart", restartGame);
 
 	});
 	
