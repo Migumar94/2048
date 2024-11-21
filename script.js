@@ -6,6 +6,8 @@
 			matriz.push(array.slice(i * 4, i * 4 + 4));
 		}
 
+		
+		const gameContainer = document.getElementById("game-container"); // Contenedor principal del juego.
 
 		// Variables para detectar el gesto
 		let touchStartX = 0;
@@ -13,12 +15,18 @@
 		let touchEndX = 0;
 		let touchEndY = 0;
 	
-		document.addEventListener("touchstart", (ev) => {
+		// Prevenir comportamiento de scroll en la zona del juego
+		gameContainer.addEventListener("touchstart", (ev) => {
+			ev.preventDefault();
 			touchStartX = ev.changedTouches[0].screenX;
 			touchStartY = ev.changedTouches[0].screenY;
 		});
 	
-		document.addEventListener("touchend", (ev) => {
+		gameContainer.addEventListener("touchmove", (ev) => {
+			ev.preventDefault(); // Prevenir scroll durante el movimiento
+		});
+	
+		gameContainer.addEventListener("touchend", (ev) => {
 			ev.preventDefault();
 			touchEndX = ev.changedTouches[0].screenX;
 			touchEndY = ev.changedTouches[0].screenY;
