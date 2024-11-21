@@ -169,8 +169,8 @@
 
 	function moveLeft(matriz, merge, first_time){
 		let move = false;
-		for(let i = 0; i <= 3; i++){
-			for(let j = 0; j <= 3; j++){
+		for(let i = 3; i >= 0; i--){
+			for(let j = 3; j >= 0; j--){
 				if(matriz[i][j] != ""){
 					if( j > 0 && matriz[i][j - 1] === ""){
 						matriz[i][j - 1] = matriz[i][j];
@@ -183,8 +183,8 @@
 				}
 			}
 		}
-		for(let i = 0; i <= 3; i++){
-			for(let j = 0; j <= 3; j++){
+		for(let i = 3; i >= 0; i--){
+			for(let j = 3; j >= 0; j--){
 				if(matriz[i][j] != ""){
 					if( j > 0 && matriz[i][j - 1] == matriz[i][j] && merge){
 						matriz[i][j - 1] = matriz[i][j] * 2;
@@ -207,8 +207,8 @@
 
 	function moveRight(matriz, merge, first_time){
 		let move = false;
-		for(let i = 3; i >= 0; i--){
-			for(let j = 3; j >= 0; j--){
+		for(let i = 0; i <= 3; i++){
+			for(let j = 0; j <= 3; j++){
 				if(matriz[i][j] != ""){
 					if( j < 3 && matriz[i][j + 1] === ""){
 						matriz[i][j + 1] = matriz[i][j];
@@ -219,8 +219,8 @@
 				}
 			}
 		}
-		for(let i = 3; i >= 0; i--){
-			for(let j = 3; j >= 0; j--){
+		for(let i = 0; i <= 3; i++){
+			for(let j = 0; j <= 3; j++){
 				if(matriz[i][j] != ""){
 					if( j < 3 && matriz[i][j + 1] == matriz[i][j] && merge){
 						matriz[i][j + 1] = matriz[i][j] * 2;
