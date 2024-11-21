@@ -14,26 +14,70 @@
 		for(let i = 0; i < 4; i++){
 			matriz.push(array.slice(i * 4, i * 4 + 4));
 		}
+
+
+		// Variables para detectar el gesto
+		let touchStartX = 0;
+		let touchStartY = 0;
+		let touchEndX = 0;
+		let touchEndY = 0;
+	
+		document.addEventListener("touchstart", (ev) => {
+			touchStartX = ev.changedTouches[0].screenX;
+			touchStartY = ev.changedTouches[0].screenY;
+		});
+	
+		document.addEventListener("touchend", (ev) => {
+			touchEndX = ev.changedTouches[0].screenX;
+			touchEndY = ev.changedTouches[0].screenY;
+			handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY, matriz);
+		});
+
+
 		start(matriz);
 		document.addEventListener("keydown", (ev) => {
 			if(ev.key === "ArrowUp"){
-				moveUp(matriz, true);
+				moveUp(matriz, true, true);
 			}
-			if(ev.key === "ArrowDown"){
-				moveDown(matriz, true);
+			else if(ev.key === "ArrowDown"){
+				moveDown(matriz, true, true);
 			}
-			if(ev.key === "ArrowLeft"){
-				moveLeft(matriz, true);
+			else if(ev.key === "ArrowLeft"){
+				moveLeft(matriz, true, true);
 			}
-			if(ev.key === "ArrowRight"){
-				moveRight(matriz, true);
+			else if(ev.key === "ArrowRight"){
+				moveRight(matriz, true, true);
+			}else{
+				return;
 			}
-			generateRandom(matriz);
-			render(matriz);
-			if(checkLose(matriz)){
+			if (checkLose(matriz)) {
 				document.getElementById("lose").style.visibility = "visible";
 			}
 		});
+
+		/*function handleSwipe(startX, startY, endX, endY, matriz) {
+			let diffX = endX - startX;
+			let diffY = endY - startY;
+		
+			if (Math.abs(diffX) > Math.abs(diffY)) {
+				// Swipe horizontal
+				if (diffX > 50) {
+					moveRight(matriz, true, true);
+				} else if (diffX < -50) {
+					moveLeft(matriz, true, true);
+				}
+			} else {
+				// Swipe vertical
+				if (diffY > 50) {
+					moveDown(matriz, true, true);
+				} else if (diffY < -50) {
+					moveUp(matriz, true, true);
+				}
+			}
+			if (checkLose(matriz)) {
+				document.getElementById("lose").style.visibility = "visible";
+			}
+		}*/
 		document.getElementById("restart-btn").addEventListener("click", () => {
 			document.getElementById("lose").style.visibility = "hidden";
 			for(let i = 0; i < 4; i++){
@@ -47,9 +91,12 @@
 
 	});
 	
-	
+	function updateGame(matriz) {
+		generateRandom(matriz);
+		render(matriz);
+	}
 
-	function moveUp(matriz, merge){
+	function moveUp(matriz, merge, first_time){
 		let move = false;
 		for(let i = 0; i <= 3; i++){
 			for(let j = 0; j <= 3; j++){
@@ -77,12 +124,15 @@
 			}
 		}
 		if(move){
-			moveUp(matriz,false);
+			moveUp(matriz,false,false);
 			console.log(matriz);
+		}
+		else if(!move && !first_time){
+			updateGame(matriz);
 		}
 	}
 
-	function moveDown(matriz,merge){
+	function moveDown(matriz,merge, first_time){
 		let move = false;
 		for(let i = 3; i >= 0; i--){
 			for(let j = 3; j >= 0; j--){
@@ -110,12 +160,15 @@
 			}
 		}
 		if(move){
-			moveDown(matriz,false);
+			moveDown(matriz,false,false);
 			console.log(matriz);
+		}
+		else if(!move && !first_time){
+			updateGame(matriz);
 		}
 	}
 
-	function moveLeft(matriz, merge){
+	function moveLeft(matriz, merge, first_time){
 		let move = false;
 		for(let i = 0; i <= 3; i++){
 			for(let j = 0; j <= 3; j++){
@@ -139,18 +192,21 @@
 						matriz[i][j] = "";
 						move = true;
 						movement(document.getElementById("item" + (i * 4 + j + 1)), -100, "X");
-						document.getElementById("score").innerText = parseInt(document.getElementById("score").innerText) + matriz[i][j + 1];
+						document.getElementById("score").innerText = parseInt(document.getElementById("score").innerText) + matriz[i][j - 1];
 					}
 				}
 			}
 		}
 		if(move){
-			moveLeft(matriz,false);
+			moveLeft(matriz,false,false);
 			console.log(matriz);
+		}
+		else if(!move && !first_time){
+			updateGame(matriz);
 		}
 	}
 
-	function moveRight(matriz, merge){
+	function moveRight(matriz, merge, first_time){
 		let move = false;
 		for(let i = 3; i >= 0; i--){
 			for(let j = 3; j >= 0; j--){
@@ -178,8 +234,11 @@
 			}
 		}
 		if(move){
-			moveRight(matriz,false);
+			moveRight(matriz,false,false);
 			console.log(matriz);
+		}
+		else if(!move && !first_time){
+			updateGame(matriz);
 		}
 	}
 	
