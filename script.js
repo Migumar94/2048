@@ -17,17 +17,12 @@
 	
 		// Prevenir comportamiento de scroll en la zona del juego
 		gameContainer.addEventListener("touchstart", (ev) => {
-			ev.preventDefault();
 			touchStartX = ev.changedTouches[0].screenX;
 			touchStartY = ev.changedTouches[0].screenY;
 		});
 	
-		gameContainer.addEventListener("touchmove", (ev) => {
-			ev.preventDefault(); // Prevenir scroll durante el movimiento
-		});
 	
 		gameContainer.addEventListener("touchend", (ev) => {
-			ev.preventDefault();
 			touchEndX = ev.changedTouches[0].screenX;
 			touchEndY = ev.changedTouches[0].screenY;
 			handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY, matriz);
