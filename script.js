@@ -1,12 +1,3 @@
-/*let matriz = [[document.getElementById('item1').innerText, document.getElementById('item2').innerText,
-	 document.getElementById('item3').innerText,document.getElementById('item4').innerText], 
-	[document.getElementById('item5').innerText, document.getElementById('item6').innerText,
-	document.getElementById('item7').innerText, document.getElementById('item8').innerText], 
-	[document.getElementById('item9').innerText, document.getElementById('item10').innerText,
-	document.getElementById('item11').innerText, document.getElementById('item12').innerText],
-	[document.getElementById('item13').innerText, document.getElementById('item14').innerText,
-	document.getElementById('item15').innerText, document.getElementById('item16').innerText]];*/
-
 	document.addEventListener("DOMContentLoaded", (event) => {
 		let elements = document.getElementsByClassName("grid-item");
 		let array = Array.from(elements).map((element, index) => element.innerText);
@@ -55,7 +46,7 @@
 			}
 		});
 
-		/*function handleSwipe(startX, startY, endX, endY, matriz) {
+		function handleSwipe(startX, startY, endX, endY, matriz) {
 			let diffX = endX - startX;
 			let diffY = endY - startY;
 		
@@ -77,7 +68,7 @@
 			if (checkLose(matriz)) {
 				document.getElementById("lose").style.visibility = "visible";
 			}
-		}*/
+		}
 		document.getElementById("restart-btn").addEventListener("click", () => {
 			document.getElementById("lose").style.visibility = "hidden";
 			for(let i = 0; i < 4; i++){
