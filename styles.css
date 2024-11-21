@@ -28,6 +28,7 @@ body {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
+	overscroll-behavior: contain;
 }
 h1 {
 	color: #776e65;
