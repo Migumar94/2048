@@ -19,6 +19,7 @@
 		});
 	
 		document.addEventListener("touchend", (ev) => {
+			ev.preventDefault();
 			touchEndX = ev.changedTouches[0].screenX;
 			touchEndY = ev.changedTouches[0].screenY;
 			handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY, matriz);
